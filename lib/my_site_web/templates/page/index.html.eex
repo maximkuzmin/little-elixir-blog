@@ -1,0 +1,38 @@
+<section>
+  <p>
+    Blog about learning Elixir and Phoenix by writing this blog and site for it.
+    I write code for this site and comment it using posts on this site.
+  </p>
+
+  <p>First iteration.</p>
+  <p>
+    <strong>TODO:</strong>
+    <ul>
+      <li>Prepare vps</li>
+      <li>Deploy to vps</li>
+      <li>Wire-up database</li>
+      <li>Make simple authorization logic for user</li>
+      <li>Implement blog-post model</li>
+      <li>Make it store post content in markdown</li>
+      <li>...</li>
+      <li>...</li>
+      <li>Profit!</li>
+    </ul>
+  </p>
+</section>
+
+
+<section class="row">
+  <article class="column">
+    <p>
+      Author: <strong>Maxim Kuzmin</strong>
+    </p>
+  </article>
+  <article class="column">
+
+    <p>
+      Feel free to contact me via
+      <a href="mailto:mail@maximkuzmin.rocks"> mail@maximkuzmin.rocks</a>
+    </p>
+  </article>
+</section>
