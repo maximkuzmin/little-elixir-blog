@@ -8,8 +8,8 @@
   <p>
     <strong>TODO:</strong>
     <ul>
-      <li>Prepare vps</li>
-      <li>Deploy to vps</li>
+      <li><s>Prepare vps</s></li>
+      <li><s>Deploy to vps</s></li>
       <li>Wire-up database</li>
       <li>Make simple authorization logic for user</li>
       <li>Implement blog-post model</li>
