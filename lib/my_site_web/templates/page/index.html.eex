@@ -10,10 +10,10 @@
     <ul>
       <li><s>Prepare vps</s></li>
       <li><s>Deploy to vps</s></li>
-      <li>Wire-up database</li>
+      <li><s>Wire-up database</s></li>
       <li>Make simple authorization logic for user</li>
-      <li>Implement blog-post model</li>
-      <li>Make it store post content in markdown</li>
+      <li><s>Implement blog-post model</li></s>
+      <li><s> Make it store post content in markdown</s></li>
       <li>...</li>
       <li>...</li>
       <li>Profit!</li>
@@ -21,8 +21,24 @@
   </p>
 </section>
 
+<%= for blog_post <- @blog_posts do %>
+  <div class="blog-post">
+    <div class="page-header">
+      <h1>
+        <%= blog_post.header%>
+      </h1>
+    </div>
+    <br>
+    <div class="post-body">
+      <%= blog_post |> MySite.Post.as_html |> Phoenix.HTML.raw %>
+    </div>
+  </div>
+<% end %>
 
-<section class="row">
+
+
+
+<footer class="row">
   <article class="column">
     <p>
       Author: <strong>Maxim Kuzmin</strong>
@@ -35,4 +51,4 @@
       <a href="mailto:mail@maximkuzmin.rocks"> mail@maximkuzmin.rocks</a>
     </p>
   </article>
-</section>
+</footer>
