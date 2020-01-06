@@ -12,8 +12,8 @@ defmodule MySite.Post do
   @doc false
   def changeset(post, attrs) do
     post
-      |> cast(attrs, [:markdown, :header])
-      |> validate_required([:markdown, :header])
+    |> cast(attrs, [:markdown, :header])
+    |> validate_required([:markdown, :header])
   end
 
   def as_html(%MySite.Post{markdown: markdown}) do

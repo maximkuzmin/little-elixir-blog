@@ -3,7 +3,6 @@ use Mix.Config
 # Configure your database
 config :my_site, MySite.Repo,
   username: "max",
-  password: "111",
   database: "my_site_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
