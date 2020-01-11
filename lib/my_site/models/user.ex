@@ -38,20 +38,29 @@ defmodule MySite.User do
     |> hash_password()
   end
 
+  def find_by_email(email, repo \\ MySite.Repo) do
+    repo.get_by(__MODULE__, email: email)
+  end
+
   defp validate_password_confirmation(
          %{
            valid?: true,
            changes: %{password: password, password_confirmation: password_confirmation}
          } = changeset
-       ) when password == password_confirmation,  do: changeset
+       )
+       when password == password_confirmation,
+       do: changeset
+
   defp validate_password_confirmation(%{valid?: true} = changeset) do
     add_error(changeset, :password_confirmation, "Password and confirmation must be equal")
   end
+
   defp validate_password_confirmation(changeset), do: changeset
 
   defp hash_password(%{valid?: true, changes: %{password: password}} = changeset) do
     change(changeset, Bcrypt.add_hash(password))
     |> delete_change(:password)
   end
+
   defp hash_password(changeset), do: changeset
 end

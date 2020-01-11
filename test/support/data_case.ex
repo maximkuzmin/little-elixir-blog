@@ -11,6 +11,7 @@ defmodule MySite.DataCase do
   inside a transaction which is reset at the beginning
   of the test unless the test case is marked as async.
   """
+  alias Ecto.Adapters.SQL.Sandbox
 
   use ExUnit.CaseTemplate
 
@@ -26,10 +27,10 @@ defmodule MySite.DataCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(MySite.Repo)
+    :ok = Sandbox.checkout(MySite.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(MySite.Repo, {:shared, self()})
+      Sandbox.mode(MySite.Repo, {:shared, self()})
     end
 
     :ok

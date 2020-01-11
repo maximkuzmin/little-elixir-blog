@@ -1,7 +1,6 @@
 defmodule MySiteWeb.PageController do
   use MySiteWeb, :controller
-  alias MySite.Repo
-  alias MySite.Post
+  alias MySite.{Post, Repo}
   import Ecto.Query, only: [from: 2]
 
   def index(conn, _params) do

@@ -1,4 +1,7 @@
 defmodule MySite.Post do
+  @moduledoc """
+  Model devoted to store posts of the blog
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

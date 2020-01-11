@@ -24,6 +24,7 @@ defmodule MySiteWeb do
       import Plug.Conn
       import MySiteWeb.Gettext
       alias MySiteWeb.Router.Helpers, as: Routes
+      import MySiteWeb.Services.Authentication, only: [check_user_is_authorized: 2]
     end
   end
 
