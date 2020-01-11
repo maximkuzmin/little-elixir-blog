@@ -38,10 +38,6 @@ defmodule MySite.User do
     |> hash_password()
   end
 
-  def find_by_email(email, repo \\ MySite.Repo) do
-    repo.get_by(__MODULE__, email: email)
-  end
-
   defp validate_password_confirmation(
          %{
            valid?: true,

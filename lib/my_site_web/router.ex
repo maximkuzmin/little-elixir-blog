@@ -19,6 +19,7 @@ defmodule MySiteWeb.Router do
 
     get "/", PageController, :index
     resources "/session", SessionController, only: [:new, :create, :delete]
+    resources "/posts", PostController, only: [:index]
   end
 
   # Other scopes may use custom stacks.

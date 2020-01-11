@@ -4,6 +4,7 @@ defmodule MySiteWeb.Services.Authentication do
   """
   import Phoenix.Controller, only: [put_flash: 3, redirect: 2]
   alias MySite.User
+  alias MySiteWeb.Router
 
   import Plug.Conn,
     only: [
@@ -38,7 +39,7 @@ defmodule MySiteWeb.Services.Authentication do
 
   def login_with_email_and_password(conn, email, password, opts) do
     {:ok, repo} = Keyword.fetch(opts, :repo)
-    user = User.find_by_username_or_email(email, repo)
+    user = repo.get_by(User, email: email)
 
     all_good = user && Bcrypt.check_pass(user, password)
 
@@ -56,7 +57,7 @@ defmodule MySiteWeb.Services.Authentication do
     else
       conn
       |> put_flash(:error, "Login first, please")
-      |> redirect(to: Router.session_path(conn, :new))
+      |> redirect(to: Router.Helpers.session_path(conn, :new))
       |> halt()
     end
   end

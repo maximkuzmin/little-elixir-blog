@@ -6,7 +6,7 @@ defmodule MySiteWeb.SessionController do
     render(conn, "new.html")
   end
 
-  def create(conn, %{email: email, password: password}) do
+  def create(conn, %{"login" => %{"email" => email, "password" => password}}) do
     result = Auth.login_with_email_and_password(conn, email, password, repo: MySite.Repo)
 
     case result do
