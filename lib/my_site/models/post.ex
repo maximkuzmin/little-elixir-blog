@@ -27,4 +27,6 @@ defmodule MySite.Post do
       {:error, _, _} -> ""
     end
   end
+
+  def new_changeset, do: change(%__MODULE__{})
 end

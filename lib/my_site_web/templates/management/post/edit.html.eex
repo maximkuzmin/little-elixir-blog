@@ -1,0 +1,4 @@
+<h1>
+  Edit post:
+</h1>
+<%= render "form.html", post: @post, path: Routes.post_path(@conn, :update, @post.data.id) %>

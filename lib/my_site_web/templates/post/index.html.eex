@@ -1,3 +1,0 @@
-<%= for post <- @posts do %>
-  <p><%= post.header %></p>
-<% end %>

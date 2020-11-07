@@ -1,0 +1,29 @@
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Status</th>
+      <th>Published</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= for post <- @posts do %>
+    <tr>
+      <td>
+        <%= post.header %>
+      </td>
+      <td>
+        ..status
+      </td>
+      <td>
+        ..published
+      </td>
+      <td>
+        <%= button("Edit", to: Routes.post_path(@conn, :edit, post.id), method: :get) %>
+        <%= button("Delete", to: Routes.post_path(@conn, :delete, post.id), "data-confirm": "Are you sure?") %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

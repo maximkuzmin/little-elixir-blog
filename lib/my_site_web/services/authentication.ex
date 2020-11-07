@@ -16,7 +16,7 @@ defmodule MySiteWeb.Services.Authentication do
     ]
 
   @doc """
-  Made to work as PLug module to pass repo to #call/2
+  Made to work as Plug module to pass repo to #call/2
   """
   def init(opts), do: Keyword.fetch!(opts, :repo)
 

@@ -20,6 +20,8 @@ defmodule MySiteWeb.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
+      import MySite.Support.Fixtures
+      import Plug.Test
       alias MySiteWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing

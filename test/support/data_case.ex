@@ -23,6 +23,7 @@ defmodule MySite.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import MySite.DataCase
+      import MySite.Support.Fixtures
     end
   end
 

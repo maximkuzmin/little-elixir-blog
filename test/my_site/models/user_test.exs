@@ -1,6 +1,5 @@
 defmodule MySite.Models.UserTest do
-  use ExUnit.Case, async: true
-  alias Ecto.Adapters.SQL.Sandbox
+  use MySite.DataCase, async: true
   alias MySite.User
 
   @valid_user %{
@@ -9,11 +8,6 @@ defmodule MySite.Models.UserTest do
     password: "SupersecurePassword12",
     password_confirmation: "SupersecurePassword12"
   }
-
-  setup do
-    # Explicitly get a connection before each test
-    :ok = Sandbox.checkout(MySite.Repo)
-  end
 
   test "#creation_changeset tests password and password_confirmation similarity" do
     invalid_user = @valid_user |> Map.put(:password_confirmation, "Not so secure password")

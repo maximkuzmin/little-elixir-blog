@@ -1,0 +1,4 @@
+<h1>
+  New post:
+</h1>
+<%= render "form.html", post: @post, path: Routes.post_path(@conn, :create) %>

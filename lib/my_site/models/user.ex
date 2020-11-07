@@ -4,9 +4,12 @@ defmodule MySite.User do
   """
   use Ecto.Schema
   import Ecto.Changeset
+  import Ecto.Query, only: [from: 2]
 
-  @email_regexp ~r/([A-z]|\.|\d)+\@([A-z]|\d)+\.[A-z]{2,}/
-  @username_regexp ~r/[A-z0-9]+/
+  # credo:disable-for-next-line
+  # TODO: use regexps later
+  # @email_regexp ~r/([A-z]|\.|\d)+\@([A-z]|\d)+\.[A-z]{2,}/
+  # @username_regexp ~r/[A-z0-9]+/
 
   schema "users" do
     field :email, :string
@@ -36,6 +39,12 @@ defmodule MySite.User do
     |> validate_password_confirmation()
     |> validate_length(:password, min: 8)
     |> hash_password()
+  end
+
+  @spec find_by_email(String.t(), atom()) :: nil | User.t()
+  def find_by_email(email, repo \\ MySite.Repo) when is_binary(email) and is_atom(repo) do
+    query = from u in __MODULE__, where: u.email == ^email
+    repo.one(query)
   end
 
   defp validate_password_confirmation(

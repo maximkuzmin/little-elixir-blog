@@ -1,17 +1,19 @@
 defmodule MySiteWeb.Router do
   use MySiteWeb, :router
+  alias MySiteWeb.Services.Authentication
+  import Authentication, only: [check_user_is_authorized: 2]
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
-    plug MySiteWeb.Services.Authentication, repo: MySite.Repo
+    plug Authentication, repo: MySite.Repo
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
+  pipeline :logged_as_manager do
+    plug :check_user_is_authorized
   end
 
   scope "/", MySiteWeb do
@@ -19,11 +21,10 @@ defmodule MySiteWeb.Router do
 
     get "/", PageController, :index
     resources "/session", SessionController, only: [:new, :create, :delete]
-    resources "/posts", PostController, only: [:index]
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", MySiteWeb do
-  #   pipe_through :api
-  # end
+  scope "/management/", MySiteWeb.Management do
+    pipe_through [:browser, :logged_as_manager]
+    resources "/posts", PostController, except: [:show]
+  end
 end
