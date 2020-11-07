@@ -1,5 +1,5 @@
 <%= form_for @post, @path, [id: "post_form"],  fn f -> %>
   <%= text_input f, :header %>
   <%= textarea f, :markdown, id: "markdown_input" %>
-  <%= submit f %>
+  <%= submit "Save" %>
 <% end %>

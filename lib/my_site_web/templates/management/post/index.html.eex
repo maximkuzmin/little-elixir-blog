@@ -1,9 +1,9 @@
+<%= button("new", to: Routes.post_path(@conn, :new), method: :get) %>
 <table>
   <thead>
     <tr>
       <th>Title</th>
       <th>Status</th>
-      <th>Published</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -12,9 +12,6 @@
     <tr>
       <td>
         <%= post.header %>
-      </td>
-      <td>
-        ..status
       </td>
       <td>
         ..published

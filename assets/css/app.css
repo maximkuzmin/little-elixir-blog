@@ -1,4 +1,6 @@
 /* This file is for your main application css. */
 
-@import "./phoenix.css";
-@import "../node_modules/simplemde/dist/simplemde.min.css"
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "./additional_styles.css";
+@import "../node_modules/simplemde/dist/simplemde.min.css";
+
